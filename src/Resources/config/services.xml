@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="cws.sonata.cache.controller.cache.class">Cws\Bundle\SonataCacheManagingBundle\Controller\Admin\CacheController</parameter>
+        <parameter key="cws.sonata.cache.cache.class">Cws\Bundle\SonataCacheManagingBundle\Admin\CacheAdmin</parameter>
+        <parameter key="cws.sonata.cache.menu.class">Cws\Bundle\SonataCacheManagingBundle\Menu\MenuBuilderListener</parameter>
+        <parameter key="cws.sonata.cache.liip.class">Cws\Bundle\SonataCacheManagingBundle\Cache\LiipCache</parameter>
+        <parameter key="cws.sonata.cache.symfony.class">Cws\Bundle\SonataCacheManagingBundle\Cache\SymfonyCache</parameter>
+    </parameters>
+
+    <services>
+        <!-- Menu -->
+        <service id="cws.sonata.cache.managing.admin.menu_listener" class="%cws.sonata.cache.menu.class%">
+            <tag name="kernel.event_listener" event="sonata.admin.event.configure.menu.sidebar" method="addMenuItems" />
+        </service>
+
+        <!-- Admin -->
+        <service id="cws.sonata.cache.managing.admin.view" class="%cws.sonata.cache.cache.class%">
+            <argument />
+            <argument />
+            <argument>%cws.sonata.cache.controller.cache.class%</argument>
+            <tag name="sonata.admin" manager_type="orm" group="Cache" label="Cache" />
+        </service>
+
+        <!-- Cache -->
+        <service id="cws.sonata.cache.managing.liip" class="%cws.sonata.cache.liip.class%" public="true">
+            <argument type="service" id="kernel" />
+        </service>
+
+        <service id="cws.sonata.cache.managing.symfony" class="%cws.sonata.cache.symfony.class%" public="true">
+            <argument type="service" id="kernel" />
+        </service>
+
+        <!-- Alias -->
+        <service id="%cws.sonata.cache.liip.class%" alias="cws.sonata.cache.managing.liip" />
+        <service id="%cws.sonata.cache.symfony.class%" alias="cws.sonata.cache.managing.symfony" />
+    </services>
+</container>

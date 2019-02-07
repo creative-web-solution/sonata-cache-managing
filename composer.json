@@ -1,0 +1,38 @@
+{
+    "name": "creative-web-solution/cws-sonata-cache-managing-bundle",
+    "description": "Managing cache in sonata admin.",
+    "keywords": [
+        "creative-web-solution",
+        "cws",
+        "bundle",
+        "symfony4",
+        "cache",
+        "managing"
+    ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CWS",
+            "email": "cws-info@cws-studio.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1",
+
+        "symfony/cache": "^4.0 || ^4.1 || ^4.2",
+        "symfony/dependency-injection": "^4.0 || ^4.1 || ^4.2",
+        "symfony/framework-bundle": "^4.0 || ^4.1 || ^4.2",
+
+        "liip/imagine-bundle": "^2.0",
+
+        "sonata-project/admin-bundle": "^3.35",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cws\\Bundle\\SonataCacheManagingBundle\\": "src/"
+        }
+    }
+}

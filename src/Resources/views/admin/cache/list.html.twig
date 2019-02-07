@@ -1,0 +1,38 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block sonata_head_title %}Supression des différents caches - Admin{% endblock %}
+{% block navbar_title %}Supression des différents caches{% endblock %}
+
+{% block sonata_admin_content %}
+    {{ parent() }}
+
+    <div class="row">
+        <div class="col-xs-6 col-md-6">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-cog"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Symfony</span><br>
+                    <a href="{{ path('admin_cws_cache_remove', { type: 'symfony' }) }}" class="btn btn-default">
+                        Supprimer le cache symfony
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {% if hasLiip is defined and hasLiip %}
+        <div class="col-xs-6 col-md-6">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-image"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Liip</span><br>
+                    <a href="{{ path('admin_cws_cache_remove', { type: 'liip' }) }}" class="btn btn-default">
+                        Supprimer le cache liip
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
