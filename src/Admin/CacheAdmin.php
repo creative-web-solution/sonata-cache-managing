@@ -4,6 +4,7 @@ namespace Cws\Bundle\SonataCacheManagingBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 
 /**
  * Class CacheAdmin
@@ -17,7 +18,7 @@ final class CacheAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureRoutes(RouteCollection $collection)
+    protected function configureRoutes(RouteCollectionInterface $collection): void
     {
         $collection->add('remove', 'remove/{type}');
         $collection->clearExcept(['list', 'remove']);
