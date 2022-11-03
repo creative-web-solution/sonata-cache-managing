@@ -44,6 +44,11 @@ class SymfonyCache implements CacheInterface
         $application->run($input, $output);
     }
 
+    public function support(string $type): bool
+    {
+        return $type === 'symfony';
+    }
+
     //-------------------
     //     ACCESSORS
     //-------------------

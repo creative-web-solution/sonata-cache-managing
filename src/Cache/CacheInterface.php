@@ -9,4 +9,5 @@ namespace Cws\Bundle\SonataCacheManagingBundle\Cache;
 interface CacheInterface
 {
     public function handle();
+    public function support(string $type): bool;
 }

@@ -43,6 +43,11 @@ class LiipCache implements CacheInterface
         $application->run($input, $output);
     }
 
+    public function support(string $type): bool
+    {
+        return $type === 'liip';
+    }
+
     //-------------------
     //     ACCESSORS
     //-------------------
@@ -63,7 +68,7 @@ class LiipCache implements CacheInterface
     public function setKernel(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
-        
+
         return $this;
     }
 }
