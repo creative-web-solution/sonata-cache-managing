@@ -4,6 +4,7 @@ namespace Cws\Bundle\SonataCacheManagingBundle\Controller\Admin;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -12,10 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CacheController extends CRUDController
 {
-    /**
-     * @return Response
-     */
-    public function listAction()
+    public function listAction(Request $request): Response
     {
         $hasLiip = $this->container->has('liip_imagine.cache.manager');
 
